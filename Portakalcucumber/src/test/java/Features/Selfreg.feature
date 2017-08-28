@@ -5,20 +5,20 @@
 
       Scenario:Register with the correct values
         Given I navigate to the register page
-        And ı click Hemen üye ol button
-        And ı enter restoran adi with correct format
-        And ı choose il from the il combobox
-        And ı choose ilce from the ilce combobox
+        And I click Hemen uye ol button
+        And I enter restoran adi with correct format
+        And I choose il from the il combobox
+        And I choose ilce from the ilce combobox
         And I choose semt from the semt combobox
-        And ı enter restoran adresi with correct format
-        And ı enter restoran sahibi ad with correct format
-        And ı enter restoran sahibi soyadi with correct format
+        And I enter restoran adresi with correct format
+        And I enter restoran sahibi ad with correct format
+        And I enter restoran sahibi soyadi with correct format
         And I enter restoran sahibi telefon no with correct format
-        And ı enter restoran telefon no with correct format
-        And ı enter e-mail bas with correct format
-        And ı enter e-mail son with correct format
-        And ı click kayıtol button
-        And ı see the işlem gerçekleştiriliyor pop up
-        And ı see the bilgilendirme pop up
-        Then ı confirm the pop up message
+        And I enter restoran telefon no with correct format
+        And I enter e-mail bas with correct format
+        And I enter e-mail son with correct format
+        And I click kayitol button
+        And I see the islem gerceklestiriliyor pop up
+        And I see the bilgilendirme pop up
+        Then I confirm the pop up message
 

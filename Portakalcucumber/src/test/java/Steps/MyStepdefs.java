@@ -1,41 +1,33 @@
 package Steps;
 
 import Base.BaseUtil;
-import com.sun.xml.internal.rngom.parse.host.Base;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-
 public class MyStepdefs extends BaseUtil {
 
-    public BaseUtil base;
-    Random r = new Random();
-    UUID uuid = UUID.randomUUID();
-    String randomUUIDString = uuid.toString();
+    private BaseUtil base;
+    private Random r = new Random();
+    private UUID uuid = UUID.randomUUID();
+    private String randomUUIDString = uuid.toString();
 
 
     public MyStepdefs(BaseUtil base) {
         this.base = base;
     }
 
-    @And("^ı enter restoran adi with correct format$")
-    public void ıEnterRestoranAdiWithCorrectFormat() throws Throwable {
+    @And("^I enter restoran adi with correct format$")
+    public void IEnterRestoranAdiWithCorrectFormat() throws Throwable {
 
         base.driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
 
@@ -44,8 +36,8 @@ public class MyStepdefs extends BaseUtil {
 
     }
 
-    @And("^ı choose il from the il combobox$")
-    public void ıChooseIlFromTheIlCombobox() throws Throwable {
+    @And("^I choose il from the il combobox$")
+    public void IChooseIlFromTheIlCombobox() throws Throwable {
 
 
         //şehir
@@ -76,8 +68,8 @@ public class MyStepdefs extends BaseUtil {
         return r.nextInt((max - min) + 1) + min;
     }
 
-    @And("^ı choose ilce from the ilce combobox$")
-    public void ıChooseIlceFromTheIlceCombobox() throws Throwable {
+    @And("^I choose ilce from the ilce combobox$")
+    public void IChooseIlceFromTheIlceCombobox() throws Throwable {
 
         //ilçe
 
@@ -85,13 +77,12 @@ public class MyStepdefs extends BaseUtil {
         Select s2 = new Select(base.driver.findElement(By.id("restaurant-county")));
         int listSize = s2.getOptions().size();
 
-        int optionIndex = getRandomNumberInRange(r, 1, listSize-1);
-        if(listSize>1) {
+        int optionIndex = getRandomNumberInRange(r, 1, listSize - 1);
+        if (listSize > 1) {
             s2.selectByIndex(optionIndex);
         }
-        if(listSize==0 && listSize==1){
+        if (listSize <= 1) {
             System.out.println("seçenek yok");
-
         }
     }
 
@@ -105,34 +96,34 @@ public class MyStepdefs extends BaseUtil {
 
         int listSize = s2.getOptions().size();
 
-        int optionIndex = getRandomNumberInRange(r, 1, listSize-1);
+        int optionIndex = getRandomNumberInRange(r, 1, listSize - 1);
 
 
-        if(listSize>1){
-        s2.selectByIndex(optionIndex);}
+        if (listSize > 1) {
+            s2.selectByIndex(optionIndex);
+        }
 
-        if(listSize==0 && listSize==1){
+        if (listSize <= 1) {
             System.out.println("seçenek yok");
-
         }
     }
 
-    @And("^ı enter restoran adresi with correct format$")
-    public void ıEnterRestoranAdresiWithCorrectFormat() throws Throwable {
+    @And("^I enter restoran adresi with correct format$")
+    public void IEnterRestoranAdresiWithCorrectFormat() throws Throwable {
         base.driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
         base.driver.findElement(By.id("restaurant-address")).sendKeys(randomUUIDString);
     }
 
-    @And("^ı enter restoran sahibi ad with correct format$")
-    public void ıEnterRestoranSahibiAdWithCorrectFormat() throws Throwable {
+    @And("^I enter restoran sahibi ad with correct format$")
+    public void IEnterRestoranSahibiAdWithCorrectFormat() throws Throwable {
         base.driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
 
 
         base.driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/div[2]/input[1]")).sendKeys(base.uret());
     }
 
-    @And("^ı enter restoran sahibi soyadi with correct format$")
-    public void ıEnterRestoranSahibiSoyadiWithCorrectFormat() throws Throwable {
+    @And("^I enter restoran sahibi soyadi with correct format$")
+    public void IEnterRestoranSahibiSoyadiWithCorrectFormat() throws Throwable {
         base.driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
 
         base.driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/div[2]/input[2]")).sendKeys(base.uret());
@@ -145,8 +136,8 @@ public class MyStepdefs extends BaseUtil {
         base.driver.findElement(By.id("restaurant-owner-phone")).sendKeys("5508637460");
     }
 
-    @And("^ı enter restoran telefon no with correct format$")
-    public void ıEnterRestoranTelefonNoWithCorrectFormat() throws Throwable {
+    @And("^I enter restoran telefon no with correct format$")
+    public void IEnterRestoranTelefonNoWithCorrectFormat() throws Throwable {
         int randomNumber = r.nextInt(899999) + 1000000;
 
         //restoran telefon no
@@ -156,8 +147,8 @@ public class MyStepdefs extends BaseUtil {
 
     }
 
-    @And("^ı enter e-mail bas with correct format$")
-    public void ıEnterEMailBasWithCorrectFormat() throws Throwable {
+    @And("^I enter e-mail bas with correct format$")
+    public void IEnterEMailBasWithCorrectFormat() throws Throwable {
         base.driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
 
         //String emailBas = base.uret();
@@ -166,16 +157,16 @@ public class MyStepdefs extends BaseUtil {
 
     }
 
-    @And("^ı enter e-mail son with correct format$")
-    public void ıEnterEMailSonWithCorrectFormat() throws Throwable {
+    @And("^I enter e-mail son with correct format$")
+    public void IEnterEMailSonWithCorrectFormat() throws Throwable {
         base.driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
         String emailSon = "gmail.com";
         base.driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/div[6]/input[2]")).sendKeys(emailSon);
 
     }
 
-    @And("^ı click kayıtol button$")
-    public void ıClickKayıtolButton() throws Throwable {
+    @And("^I click kayitol button$")
+    public void IClickKayitolButton() throws Throwable {
         base.driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
         base.driver.findElement(By.id("register-my-restaurant")).click();
 
@@ -188,28 +179,28 @@ public class MyStepdefs extends BaseUtil {
         base.driver.get("http://portakal.ystest.com");
     }
 
-    @And("^ı click Hemen üye ol button$")
-    public void ıClickHemenÜyeOlButton() throws Throwable {
+    @And("^I click Hemen uye ol button$")
+    public void IClickHemenUyeOlButton() throws Throwable {
         base.driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
         base.driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[1]/div/div[1]/div[2]/a")).click();
     }
 
-    @And("^ı see the işlem gerçekleştiriliyor pop up$")
-    public void ıSeeTheIşlemGerçekleştiriliyorPopUp() throws Throwable {
+    @And("^I see the islem gerceklestiriliyor pop up$")
+    public void ISeeTheIslemGerceklestiriliyorPopUp() throws Throwable {
         base.driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
 
         try {
             Alert alt1 = base.driver.switchTo().alert();
             alt1.accept();
         } catch (NoAlertPresentException noe) {
-
+            System.out.println("ISeeTheIslemGerceklestiriliyorPopUp exception");
         }
 
         base.driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
     }
 
-    @And("^ı see the bilgilendirme pop up$")
-    public void ıSeeTheBilgilendirmePopUp() throws Throwable {
+    @And("^I see the bilgilendirme pop up$")
+    public void ISeeTheBilgilendirmePopUp() throws Throwable {
 
         base.driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
 
@@ -218,28 +209,24 @@ public class MyStepdefs extends BaseUtil {
             alt2.accept();
 
         } catch (NoAlertPresentException noe) {
+            System.out.println("ISeeTheBilgilendirmePopUp exception");
         }
-
-
-
     }
 
-    @Then("^ı confirm the pop up message$")
-    public void ıConfirmThePopUpMessage() throws Throwable {
+    @Then("^I confirm the pop up message$")
+    public void IConfirmThePopUpMessage() throws Throwable {
 
         base.driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
         //base.driver.findElement(By.xpath("/html/body/div[2]/div[2]")).click();
-       try{
-           String ab = base.driver.findElement(By.id("restaurantRegisterSuccessMessage")).getText();
-
-        Assert.assertEquals("Restoran Kaydınız başarıyla tamamlandı. Mail Adresinize ve telefonunuza gönderilen şifre ve kullanıcı adınızla sisteme giriş yapabilirsiniz.", ab);
-
-    } catch(AssertionError ae) {
-
-           Assert.fail();
-       }
+        try {
+            String ab = base.driver.findElement(By.id("restaurantRegisterSuccessMessage")).getText();
+            Assert.assertEquals("Restoran Kaydınız başarıyla tamamlandı. Mail Adresinize ve telefonunuza gönderilen şifre ve kullanıcı adınızla sisteme giriş yapabilirsiniz.", ab);
+        } catch (AssertionError ae) {
+            Assert.fail();
+        }
 
 
-}}
+    }
+}
 
 
